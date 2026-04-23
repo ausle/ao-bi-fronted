@@ -1,0 +1,255 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#app {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100%;
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+    "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+}
+
+body {
+  background: #f5f7fb;
+  color: #1f2937;
+}
+
+.auth-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #ecf5ff 0%, #e8edff 100%);
+  padding: 24px;
+}
+
+.auth-card {
+  width: 520px;
+  max-width: 100%;
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(30, 64, 175, 0.15);
+  padding: 40px;
+}
+
+.auth-brand {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.auth-brand h1 {
+  margin: 0;
+  font-size: 40px;
+}
+
+.auth-brand p {
+  margin-top: 8px;
+  color: #3b82f6;
+  font-size: 14px;
+}
+
+.auth-title {
+  margin: 0 0 20px;
+  text-align: center;
+  color: #2563eb;
+  font-size: 20px;
+}
+
+.link-row {
+  display: flex;
+  margin-top: -6px;
+  margin-bottom: 16px;
+}
+
+.submit-btn {
+  width: 100%;
+}
+
+.auth-footer {
+  margin-top: 16px;
+  text-align: right;
+  color: #6b7280;
+  font-size: 12px;
+}
+
+.dashboard-layout {
+  min-height: 100vh;
+  display: flex;
+}
+
+.sidebar {
+  width: 220px;
+  background: #fff;
+  border-right: 1px solid #e5e7eb;
+  display: flex;
+  flex-direction: column;
+}
+
+.logo-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 22px 18px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.logo-icon {
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  background: #3b82f6;
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+}
+
+.logo-text {
+  font-weight: 700;
+}
+
+.side-menu {
+  border-right: none;
+  flex: 1;
+  padding-top: 10px;
+}
+
+.user-panel {
+  padding: 12px;
+  border-top: 1px solid #e5e7eb;
+}
+
+.user-trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.user-avatar,
+.profile-avatar {
+  background: linear-gradient(135deg, #60a5fa, #2563eb);
+  color: #fff;
+}
+
+.user-name {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.user-role {
+  font-size: 12px;
+  color: #9ca3af;
+}
+
+.main-content {
+  flex: 1;
+  padding: 24px;
+}
+
+.dashboard-page {
+  min-width: 760px;
+}
+
+.page-title {
+  margin: 0 0 20px;
+  font-size: 28px;
+}
+
+.analysis-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 20px;
+}
+
+.right-col {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.upload-box {
+  width: 100%;
+}
+
+.upload-name {
+  color: #2563eb;
+  font-size: 12px;
+  margin-top: 6px;
+}
+
+.placeholder-text,
+.sub-desc {
+  color: #9ca3af;
+}
+
+.form-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.page-footer {
+  margin-top: 24px;
+  text-align: center;
+  color: #6b7280;
+  font-size: 13px;
+}
+
+.empty-card {
+  min-height: 360px;
+}
+
+.profile-card,
+.stat-grid {
+  margin-bottom: 20px;
+}
+
+.profile-header {
+  display: flex;
+  gap: 20px;
+}
+
+.profile-meta {
+  flex: 1;
+}
+
+.profile-top-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.profile-top-row h2 {
+  margin: 0;
+}
+
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.stat-num {
+  font-size: 28px;
+  font-weight: 700;
+  color: #2563eb;
+}
+
+.stat-label {
+  margin-top: 6px;
+  color: #6b7280;
+}
+
+@media (max-width: 1100px) {
+  .analysis-grid {
+    grid-template-columns: 1fr;
+  }
+}
