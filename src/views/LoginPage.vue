@@ -10,12 +10,12 @@
 
       <el-form :model="form" label-position="top" @submit.prevent>
         <el-form-item>
-          <el-input v-model="form.username" placeholder="aosule1" size="large" clearable />
+          <el-input v-model="form.username" placeholder="请输入用户名" size="large" clearable />
         </el-form-item>
         <el-form-item>
           <el-input
             v-model="form.password"
-            placeholder="12345678"
+            placeholder="请输入密码"
             size="large"
             type="password"
             show-password
@@ -45,7 +45,7 @@ import request from '../utils/request'
 
 const router = useRouter()
 const userStore = useUserStore()
-const form = reactive({ username: 'yupi', password: '12345678' })
+const form = reactive({ username: '', password: '' })
 const loading = ref(false)
 
 const goRegister = () => router.push('/register')
