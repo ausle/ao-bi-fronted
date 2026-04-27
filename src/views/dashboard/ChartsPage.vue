@@ -198,6 +198,8 @@ const loadCharts = async () => {
       current: current.value,
       pageSize,
       chartName: searchChartName.value.trim(),
+      sortField: 'createTime',
+      sortOrder: 'descend',
     })
     if (res?.code !== 0) {
       ElMessage.error(res?.message || '获取图表列表失败')

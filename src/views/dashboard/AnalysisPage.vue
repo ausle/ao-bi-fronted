@@ -95,6 +95,7 @@
 import { nextTick, onBeforeUnmount, reactive, ref } from 'vue'
 import { ElMessage } from 'element-plus'
 import { UploadFilled } from '@element-plus/icons-vue'
+import { useRouter } from 'vue-router'
 import request from '../../utils/request'
 import * as echarts from 'echarts'
 
@@ -113,6 +114,7 @@ const isSubmitting = ref(false)
 const chartRef = ref(null)
 const chartError = ref('')
 let chartInstance = null
+const router = useRouter()
 
 // 每次重新渲染前都销毁旧实例，避免重复 init / 内存泄漏
 const disposeChart = () => {
@@ -213,7 +215,7 @@ const handleSubmit = async () => {
   chartError.value = ''
 
   try {
-    const res = await request.post('/chart/gen', formData, {
+    const res = await request.post('/chart/gen/async', formData, {
       headers: {
         'Content-Type': 'multipart/form-data',
       },
@@ -224,17 +226,8 @@ const handleSubmit = async () => {
       return
     }
 
-    const data = res.data || {}
-    analysisConclusion.value = data.genResult || '暂无分析结论'
-    chartResult.value = data.genChart || '暂无图表结果'
-
-    // 关键点：
-    // loading=true 时 skeleton 不会渲染 default 插槽，chartRef 会是 null。
-    // 因此先关闭 loading，再等待一轮 DOM 更新后再渲染图表。
-    isSubmitting.value = false
-    await nextTick()
-    await renderGeneratedChart(chartResult.value)
-    ElMessage.success('分析成功')
+    ElMessage.success('提交成功，正在跳转到我的图表')
+    await router.push('/dashboard/charts')
   } catch (error) {
     ElMessage.error(error?.response?.data?.message || error?.message || '请求失败，请检查后端服务')
   } finally {

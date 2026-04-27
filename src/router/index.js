@@ -29,8 +29,17 @@ const router = createRouter({
 
 router.beforeEach((to) => {
   const userStore = useUserStore()
-  if (to.meta.requiresAuth && !userStore.isLoggedIn) return '/login'
-  if (to.meta.guestOnly && userStore.isLoggedIn) return '/dashboard'
+  const requiresAuth = to.matched.some((record) => record.meta?.requiresAuth)
+  const guestOnly = to.matched.some((record) => record.meta?.guestOnly)
+
+  if (requiresAuth && !userStore.isLoggedIn) {
+    return {
+      path: '/login',
+      query: { redirect: to.fullPath },
+    }
+  }
+
+  if (guestOnly && userStore.isLoggedIn) return '/dashboard'
   return true
 })
 
