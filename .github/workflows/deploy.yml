@@ -26,6 +26,18 @@ jobs:
       - name: 打包Vue项目
         run: npm run build
 
+      - name: 清理服务器目标目录
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.SERVER_HOST }}
+          username: ${{ secrets.SERVER_USER }}
+          password: ${{ secrets.SERVER_PASSWORD }}
+          # 每次上传文件前
+          # 都会先删除目录下所有现有内容（包含隐藏文件），但不删除目录本身。
+          script: |
+            mkdir -p /www/xiyuewen/club
+            find /www/xiyuewen/club -mindepth 1 -maxdepth 1 -exec rm -rf {} +
+
       - name: 上传dist到服务器
         uses: appleboy/scp-action@v0.1.7
         with:
@@ -43,6 +55,7 @@ jobs:
           host: ${{ secrets.SERVER_HOST }}
           username: ${{ secrets.SERVER_USER }}
           password: ${{ secrets.SERVER_PASSWORD }}
+          # -t 检查语法
           script: |
-            sudo nginx -t
-            sudo nginx -s reload
+            sudo /usr/local/nginx/sbin/nginx -t
+            sudo /usr/local/nginx/sbin/nginx -s reload
