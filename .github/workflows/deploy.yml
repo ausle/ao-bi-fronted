@@ -1,4 +1,4 @@
-name: 自动部署Vue项目到服务器
+name: 流水线自动部署Vue项目到服务器
 
 on:
   push:
